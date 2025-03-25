@@ -1,11 +1,9 @@
 import './TabButton.css';
 
-export default function TabButton(props) {
+export default function TabButton({ label, onGoToTab, isActive }) {
     return (
         <li>
-            <button onClick={props.onSelect}>{props.title}</button>
-            <p>{props.description}</p>
-            <p>{props.code}</p>
+            <button className={isActive ? "active" : undefined} onClick={onGoToTab}>{label}</button>
         </li>
     );
 }
