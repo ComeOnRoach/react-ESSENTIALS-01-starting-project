@@ -1,6 +1,7 @@
 import { EXAMPLES } from "../../data"
 import TabButton from "./TabButton"
 import { useState } from "react";
+import Section from "../Sections/Section";
 
 function Examples() {
     const [selectedTipic, setSelectedTopic] = useState();
@@ -10,26 +11,25 @@ function Examples() {
     }
 
     return (
-    <section id='examples'>
-        <h2>Examples</h2>
-        <menu>
-            <TabButton isActive={selectedTipic?.title === 'Components'} onGoToTab={() => handleClick(EXAMPLES.components)} label='components' />
-            <TabButton isActive={selectedTipic?.title === 'JSX'} onGoToTab={() => handleClick(EXAMPLES.jsx)} label='JSX' />
-            <TabButton isActive={selectedTipic?.title === 'Props'} onGoToTab={() => handleClick(EXAMPLES.props)} label='Props' />
-            <TabButton isActive={selectedTipic?.title === 'State'} onGoToTab={() => handleClick(EXAMPLES.state)} label='State' />
-        </menu>
-        {!selectedTipic && (<p>Please select a topic</p>)}
-        {selectedTipic && (<div id="tab-content">
-            <h3>{selectedTipic.title}</h3>
-            <p>{selectedTipic.description}</p>
-            <pre>
-                <code>
-                    {selectedTipic.code}
-                </code>
-            </pre>
-        </div>)
-        }
-    </section>);
+        <Section id='examples' title='EXPAMPLES'>
+            <menu>
+                <TabButton isActive={selectedTipic?.title === 'Components'} onClick={() => handleClick(EXAMPLES.components)} label='components' />
+                <TabButton isActive={selectedTipic?.title === 'JSX'} onClick={() => handleClick(EXAMPLES.jsx)} label='JSX' />
+                <TabButton isActive={selectedTipic?.title === 'Props'} onClick={() => handleClick(EXAMPLES.props)} label='Props' />
+                <TabButton isActive={selectedTipic?.title === 'State'} onClick={() => handleClick(EXAMPLES.state)} label='State' />
+            </menu>
+            {!selectedTipic && (<p>Please select a topic</p>)}
+            {selectedTipic && (<div id="tab-content">
+                <h3>{selectedTipic.title}</h3>
+                <p>{selectedTipic.description}</p>
+                <pre>
+                    <code>
+                        {selectedTipic.code}
+                    </code>
+                </pre>
+            </div>)
+            }
+        </Section>);
 }
 
 export default Examples;
